@@ -10,7 +10,7 @@ const migrations = {
 module.exports = {
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/roster-restuarants',
+    connection: 'postgres://localhost/roster-restaurants',
     migrations,
     seeds: {
       directory: './db/seeds'
