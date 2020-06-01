@@ -4,20 +4,29 @@ require('dotenv').config({
 });
 
 const migrations = {
-  directory: './server/migrations'
+  directory: './db/migrations'
 }
 
 module.exports = {
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/roster-restuarants'
+    connection: 'postgres://localhost/roster-restuarants',
+    migrations,
+    seeds: {
+      directory: './db/seeds'
+    }
   },
   test: {
     client: 'pg',
-    connection: 'postgres://localhost/roster-restuarants-test'
+    connection: 'postgres://localhost/roster-restuarants-test',
+    migrations
   },
   production: {
     client: 'pg',
-    connection: process.env.DATABASE_URL
+    connection: process.env.DATABASE_URL,
+    migrations,
+    seeds: {
+      directory: './db/seeds'
+    }
   }
 }
