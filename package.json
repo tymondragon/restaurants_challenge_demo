@@ -6,7 +6,14 @@
   "scripts": {
     "start": "node server",
     "build": "cd react-ui/ && npm install && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test nyc -x web/app.js -x knexfile.js -x test/test_helper.js -x '**/**.test.js' mocha --opts test/mocha.opts --recursive './{,!(node_modules)/**}/*.test.js' --exit",
+    "migrate:make": "knex migrate:make",
+    "migrate:latest": "knex migrate:latest",
+    "migrate:rollback": "knex migrate:rollback",
+    "migrate:redo": "knex migrate:rollback && knex migrate:latest",
+    "test:migrate:rollback": "NODE_ENV=test knex migrate:rollback --env test",
+    "test:migrate:latest": "NODE_ENV=test knex migrate:latest --env test",
+    "test:migrate:redo": "NODE_ENV=test knex migrate:rollback --env test && NODE_ENV=test knex migrate:latest --env test",
   },
   "keywords": [],
   "author": "",
@@ -20,5 +27,9 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "knex": "^0.21.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tymondragon/restaurants_challenge.git"
   }
 }
