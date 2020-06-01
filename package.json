@@ -11,6 +11,7 @@
     "migrate:latest": "knex migrate:latest",
     "migrate:rollback": "knex migrate:rollback",
     "migrate:redo": "knex migrate:rollback && knex migrate:latest",
+    "seed:make": "knex seed:make",
     "test:migrate:rollback": "NODE_ENV=test knex migrate:rollback --env test",
     "test:migrate:latest": "NODE_ENV=test knex migrate:latest --env test",
     "test:migrate:redo": "NODE_ENV=test knex migrate:rollback --env test && NODE_ENV=test knex migrate:latest --env test"
